@@ -1,0 +1,5 @@
+class Filtro
+{
+    id;
+    nombre;
+}
