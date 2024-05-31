@@ -1,10 +1,14 @@
 const config = 
 {
-    host : "localhost",
-    database : "LucilApp_DataBase",
-    user: "postgres",
-    password : "root",
-    port : 5432
+    user: "username",
+    password: "root",
+    server: "localhost",
+    database: "LucilApp_DataBase",
+    options:
+    {
+        trustServerCertificate: true,
+        trustedConnection: true
+    }
 }
 
 export default config;
