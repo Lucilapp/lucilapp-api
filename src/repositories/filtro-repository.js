@@ -1,13 +1,11 @@
-import DBConfig from '../configs/DBConfig.js';
-import sql from 'mssql';
+import SqlHelper from "../helpers/sql-helper.js";
 
 
 export default class FiltroRepository
 {
     getAllAsync = async () => {
-        let pool = await sql.connect(DBConfig);
-        let result = await pool.request().query("SELECT * FROM  Filtro");
-        return result.recordset;
+        const sql = new SqlHelper();
+        return sql.sqlQuery("SELECT * FROM  Filtro");
     }
 
  

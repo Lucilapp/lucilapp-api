@@ -1,25 +1,17 @@
-import DBConfig from '../configs/DBConfig.js';
-import sql from 'mssql';
+import SqlHelper from "../helpers/sql-helper.js";
 
 
 export default class TareaRepository
 {
     getAllAsync = async () => {
-        // no se va a usar
-        let pool = await sql.connect(DBConfig);
-        let result = await pool.request().query("SELECT * FROM  Tarea");
-        return result.recordset;
+        const sql = new SqlHelper();
+        return sql.sqlQuery("SELECT * FROM  Tarea");
     }
 
     getByIdCategoria = async (idCategoria) => 
     {
-        let pool = await sql.connect(DBConfig);
-        let result = await pool.request().query
-        (
-            `SELECT TOP 1 * FROM Tarea WHERE idCategoria = ${idCategoria} AND Tomada = 0 ORDER BY TiempoCreacion DESC
-            `
-        );
-        return result.recordset;
+        const sql = new SqlHelper();
+        return sql.sqlQuery(`SELECT TOP 1 * FROM Tarea WHERE idCategoria = ${idCategoria} AND Tomada = 0 ORDER BY TiempoCreacion DESC`);
     }   
 }
 
