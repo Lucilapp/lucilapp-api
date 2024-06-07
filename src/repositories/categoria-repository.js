@@ -11,6 +11,8 @@ export default class CategoriaRepository
     getByIdFiltro = async (idFiltro) => 
     {
         const sql = new SqlHelper();
-        return sql.sqlQuery(`SELECT * FROM Categoria INNER JOIN Categoria_Filtro ON Categoria.Id = Categoria_Filtro.IdCategoria INNER JOIN Filtro ON Categoria_Filtro.IdFiltro = Filtro.Id WHERE Filtro.Id = ${idFiltro}`);
+        const values = [idFiltro]
+
+        return sql.sqlQueryValues(`SELECT * FROM Categoria INNER JOIN Categoria_Filtro ON Categoria.Id = Categoria_Filtro.IdCategoria INNER JOIN Filtro ON Categoria_Filtro.IdFiltro = Filtro.Id WHERE Filtro.Id = @1`, values);
     }  
 }

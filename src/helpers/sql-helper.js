@@ -11,6 +11,13 @@ export default class SqlHelper
     }
 
     sqlQueryValues = async (query, values) => {
+        let objValues = {};
+        let i = 1;
+        values.forEach(element => {
+            objValues[i] = element;
+            i++;
+        });
+        console.log(objValues);
         let pool = await sql.connect(DBConfig);
         let result = await pool.request().query(query,values);
         return result.recordset;
