@@ -9,4 +9,12 @@ export default class CategoriaService
         return returnArray;
     }
 
+    getByIdFiltro = async (idFiltro) => 
+    {
+        const repo = new CategoriaRepository();
+        const returnArray = await repo.getByIdFiltro(idFiltro);
+        return returnArray;
+
+    }
+
 }

@@ -1,10 +1,11 @@
 import {Router} from 'express';
-import CategoriaService from '../service/categoria-service.js';
+import TareaService from '../service/tarea-service.js';
 
 const router = Router();
-const svc = new CategoriaService();
+const svc = new TareaService();
 
 router.get('/', async (req, res) => {
+    // no se va a usar este end point
     let respuesta;
     const returnArray = await svc.getAllAsync();
     if(returnArray != null)
@@ -18,11 +19,12 @@ router.get('/', async (req, res) => {
     return respuesta;
 });
 
-router.get('/:idFiltro', async (req, res) => 
+router.get('/:idCategoria', async (req, res) => 
 {
-        let idFiltro_ = req.query.idFiltro;
+
+    let idCategoria_ = req.query.idCategoria;
     let respuesta;
-    const returnArray = await svc.getByIdFiltro(idFiltro_);
+    const returnArray = await svc.getByIdCategoria(idCategoria_);
 
     
     if(returnArray != "")   
@@ -39,6 +41,5 @@ router.get('/:idFiltro', async (req, res) =>
 
     return respuesta;
 });
-
 
 export default router; 
