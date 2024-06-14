@@ -7,6 +7,4 @@ export default class FiltroRepository
         const sql = new SqlHelper();
         return sql.sqlQuery("SELECT * FROM  Filtro");
     }
-
- 
 }
