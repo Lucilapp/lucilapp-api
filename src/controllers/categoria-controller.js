@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:idFiltro', async (req, res) => 
 {
-        let idFiltro_ = req.query.idFiltro;
+    let idFiltro_ = req.query.idFiltro;
     let respuesta;
     const returnArray = await svc.getByIdFiltro(idFiltro_);
 

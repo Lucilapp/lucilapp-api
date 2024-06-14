@@ -1,17 +1,17 @@
-import SqlHelper from "../helpers/sql-helper.js";
+import PgHelper from "../helpers/pg-helper.js";
 
 
 export default class TareaRepository
 {
     getAllAsync = async () => {
-        const sql = new SqlHelper();
-        return sql.sqlQuery("SELECT * FROM  Tarea");
+        const pgHelper = new PgHelper();
+        return pgHelper.sqlQuery("SELECT * FROM  Tarea");
     }
 
-    getByIdCategoria = async (idCategoria) => 
-    {
-        const sql = new SqlHelper();
-        return sql.sqlQuery(`SELECT TOP 1 * FROM Tarea WHERE idCategoria = ${idCategoria} AND Tomada = 0 ORDER BY TiempoCreacion DESC`);
-    }   
+    getByIdCategoria = async (idCategoria) => {
+        const pgHelper = new PgHelper();
+        return pgHelper.sqlQuery(`SELECT * FROM Tarea WHERE IdCategoria = ${idCategoria} AND Tomada = false ORDER BY TiempoCreacion DESC LIMIT 1`);
+    }
+    
 }
 
