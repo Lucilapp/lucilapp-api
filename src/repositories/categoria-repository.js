@@ -5,7 +5,7 @@ export default class CategoriaRepository
 {
     getAllAsync = async () => {
         const pgHelper = new PgHelper();
-        return pgHelper.sqlQuery("SELECT * FROM  Categoria");
+        return pgHelper.sqlQuery(`SELECT * FROM  "Categoria"`);
     }
 
     getByIdFiltro = async (idFiltro) => 
@@ -13,6 +13,12 @@ export default class CategoriaRepository
         const pgHelper = new PgHelper();
         const values = [idFiltro]
 
-        return pgHelper.sqlQuery(`SELECT * FROM Categoria INNER JOIN Categoria_Filtro ON Categoria.Id = Categoria_Filtro.IdCategoria INNER JOIN Filtro ON Categoria_Filtro.IdFiltro = Filtro.Id WHERE Filtro.Id = ${idFiltro}`);
+        return pgHelper.sqlQuery(
+        `SELECT * FROM
+        "Categoria"
+        INNER JOIN "Categoria_Filtro" ON "Categoria"."Id" = "Categoria_Filtro"."IdCategoria"
+        INNER JOIN "Filtro" ON "Categoria_Filtro"."IdFiltro" = "Filtro"."Id"
+        WHERE
+        "Filtro"."Id" = ${idFiltro};`);
     }  
 }
