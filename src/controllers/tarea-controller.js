@@ -42,4 +42,30 @@ router.get('/:idCategoria', async (req, res) =>
     return respuesta;
 });
 
+router.patch('/:idUsuario/:idTarea', async (req, res) => 
+    {
+    
+        let idUsuario_ = req.query.idUsuario;
+        let idTarea_ = req.query.idTarea;
+
+        let respuesta;
+        const returnArray = await svc.assignIdUsuarioToTarea(idUsuario_, idTarea_);
+    
+        
+        if(returnArray != "")   
+        {
+            respuesta = res.status(201).json(returnArray);
+    
+        }
+        else
+        {
+            respuesta = res.status(404).send(`error`)
+        }
+    
+        
+    
+        return respuesta;
+    });
+    
+
 export default router; 

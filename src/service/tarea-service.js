@@ -19,4 +19,11 @@ export default class TareaService
 
     }
 
+    assignIdUsuarioToTarea = async (idUsuario, idTarea) =>
+        {
+            const repo = new TareaRepository();
+            const returnArray = await repo.assignIdUsuarioToTarea(idUsuario, idTarea)
+            return returnArray;
+        }
+
 }

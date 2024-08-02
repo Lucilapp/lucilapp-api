@@ -12,6 +12,12 @@ export default class TareaRepository
         const pgHelper = new PgHelper();
         return pgHelper.sqlQuery(`SELECT * FROM "Tarea" WHERE "IdCategoria" = ${idCategoria} AND "Tomada" = false ORDER BY "TiempoCreacion" DESC LIMIT 1`);
     }
+
+    assignIdUsuarioToTarea = async (idUsuario, idTarea) =>
+    {
+        const pgHelper = new PgHelper();
+        return pgHelper.sqlQuery('SELECT actualizar_usuario_tarea($1, $2)', [idUsuario, idTarea]);
+    }
     
 }
 
