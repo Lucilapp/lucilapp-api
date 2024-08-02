@@ -45,8 +45,8 @@ router.get('/:idCategoria', async (req, res) =>
 router.patch('/:idUsuario/:idTarea', async (req, res) => 
     {
     
-        let idUsuario_ = req.query.idUsuario;
-        let idTarea_ = req.query.idTarea;
+        let idUsuario_ = req.params.idUsuario;
+        let idTarea_ = req.params.idTarea;
 
         let respuesta;
         const returnArray = await svc.assignIdUsuarioToTarea(idUsuario_, idTarea_);

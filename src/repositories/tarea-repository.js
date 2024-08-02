@@ -16,7 +16,7 @@ export default class TareaRepository
     assignIdUsuarioToTarea = async (idUsuario, idTarea) =>
     {
         const pgHelper = new PgHelper();
-        return pgHelper.sqlQuery('SELECT actualizar_usuario_tarea($1, $2)', [idUsuario, idTarea]);
+        return pgHelper.sqlQuery(`SELECT actualizar_usuario_tarea(${idUsuario}, ${idTarea})`);
     }
     
 }
