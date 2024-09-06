@@ -21,7 +21,6 @@ export default class TareaRepository
 
     createAsync = async (entity) => 
     {
-        //no anda
         console.log(entity)
         const descripcion = entity.descripcion.toString()
         const clientSocket = entity.clientSocket.toString()
