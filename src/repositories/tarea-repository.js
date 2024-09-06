@@ -22,6 +22,7 @@ export default class TareaRepository
     createAsync = async (entity) => 
     {
         //no anda
+        console.log(entity)
         const descripcion = entity.descripcion.toString()
         const clientSocket = entity.clientSocket.toString()
         console.log(descripcion,clientSocket)
@@ -29,9 +30,9 @@ export default class TareaRepository
         const pgHelper = new PgHelper();
         return pgHelper.sqlQuery(        
             `INSERT INTO "Tarea"
-                ("Descripcion", "Tomada", "IdCategoria", "IdCliente", "IdUsuario")
+                ("Descripcion", "Tomada", "IdCategoria", "IdCliente", "IdUsuario", "ClientSocket")
             VALUES
-                ('hola', ${entity.tomada}, ${entity.idCategoria}, ${entity.idCliente}, ${entity.idUsuario})`
+                ('${entity.descripcion}', ${entity.tomada}, ${entity.idCategoria}, ${entity.idCliente}, ${entity.idUsuario}, '${entity.clientSocket}')`
         )
     }
     
