@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const returnArray = await svc.getAllAsync();
     if(returnArray != null)
     {
-        respuesta = res.status(200).json(returnArray);
+        respuesta = res.status(200).json({returnArray});
     } 
     else
     {

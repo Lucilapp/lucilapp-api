@@ -1,5 +1,5 @@
 {
-  "name": "tp4_pg_provinces_piva_bottarini",
+  "name": "lucilapp-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joacopiva/TP4_pg_provinces_Piva_Bottarini.git"
+    "url": "git+https://github.com/Lucilapp/lucilapp-api.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joacopiva/TP4_pg_provinces_Piva_Bottarini/issues"
+    "url": "https://github.com/Lucilapp/lucilapp-api/issues"
   },
-  "homepage": "https://github.com/joacopiva/TP4_pg_provinces_Piva_Bottarini#readme",
+  "homepage": "https://github.com/Lucilapp/lucilapp-api#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
