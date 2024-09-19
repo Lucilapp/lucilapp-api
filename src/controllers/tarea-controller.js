@@ -4,6 +4,8 @@ import TareaService from '../service/tarea-service.js';
 const router = Router();
 const svc = new TareaService();
 
+// Home BackEnd
+
 router.get('/', async (req, res) => {
     // no se va a usar este end point
     let respuesta;
@@ -42,4 +44,51 @@ router.get('/:idCategoria', async (req, res) =>
     return respuesta;
 });
 
+router.patch('/:idUsuario/:idTarea', async (req, res) => 
+    {
+    
+        let idUsuario_ = req.params.idUsuario;
+        let idTarea_ = req.params.idTarea;
+
+        let respuesta;
+        const returnArray = await svc.assignIdUsuarioToTarea(idUsuario_, idTarea_);
+    
+        
+        if(returnArray != "")   
+        {
+            respuesta = res.status(201).json(returnArray);
+    
+        }
+        else
+        {
+            respuesta = res.status(404).send(`error`)
+        }
+    
+        
+    
+        return respuesta;
+    });
+    
+
 export default router; 
+
+
+//Chat BackEnd
+
+router.post('', async (req, res) => 
+{
+    //Corroborar end point
+    let respuesta
+    let entity = req.body;
+    const returnArray = await svc.createAsync(entity);
+    if(returnArray != null)
+    {
+        respuesta = res.status(201).json(returnArray);
+    }
+    else
+    {
+        respuesta = res.status(500).send(`Error interno.`)
+    }
+
+    return respuesta
+})
