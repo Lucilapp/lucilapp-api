@@ -23,7 +23,10 @@ export default class TareaRepository
     {
         console.log(entity)
         const descripcion = entity.descripcion.toString()
-        const clientSocket = entity.clientSocket.toString()
+        const clientSocket = null
+        if(entity.clientSocket !== null){
+            clientSocket = entity.clientSocket.toString()
+        }
         console.log(descripcion,clientSocket)
 
         const pgHelper = new PgHelper();
