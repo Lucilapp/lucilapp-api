@@ -4,13 +4,14 @@ export default class ReporteRepository
 {
     createAsync = async (entity) => 
         {    
+            //falta corregir error undefined de las columnas
             console.log("entidad ",entity)
             const pgHelper = new PgHelper();
             return pgHelper.sqlQuery(        
                 `INSERT INTO "Reporte"
                     ("IdUsuario", "IdCliente", "Reporte")
                 VALUES
-                    (${entity.IdUsuario}, ${entity.IdCliente}, '${entity.Reporte}')`
+                    (${1}, ${entity.IdCliente}, '${entity.Reporte}')`
             )
         }
 }
