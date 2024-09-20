@@ -77,7 +77,6 @@ export default router;
 
 router.post('', async (req, res) => 
 {
-    //Corroborar end point
     let respuesta
     let entity = req.body;
     const returnArray = await svc.createAsync(entity);
