@@ -21,13 +21,13 @@ export default class TareaRepository
 
     createAsync = async (entity) => 
     {
-        console.log(entity)
+        console.log("entidad ",entity)
         const descripcion = entity.descripcion.toString()
-        const clientSocket = null
-        if(entity.clientSocket !== null){
+        let clientSocket = null
+        if(entity.clientSocket){
             clientSocket = entity.clientSocket.toString()
         }
-        console.log(descripcion,clientSocket)
+        console.log("otro console.log ",descripcion,clientSocket)
 
         const pgHelper = new PgHelper();
         return pgHelper.sqlQuery(        
