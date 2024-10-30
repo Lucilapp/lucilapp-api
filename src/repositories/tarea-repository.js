@@ -37,5 +37,12 @@ export default class TareaRepository
                 ('${entity.descripcion}', ${entity.tomada}, ${entity.idCategoria}, ${entity.idCliente}, ${entity.idUsuario}, '${entity.clientSocket}')`
         )
     }
+
+    deleteByIdAsync = async (id) => 
+    {
+        const pgHelper = new PgHelper();
+        return pgHelper.sqlQuery(`DELETE FROM "Tarea" WHERE "Id" = ${id}`);
+    }
+
     
 }

@@ -33,4 +33,11 @@ export default class TareaService
         const returnArray = await repo.createAsync(entity);
         return returnArray;
     }
+
+    deleteByIdAsync = async (id) =>
+    {
+        const repo = new TareaRepository();
+        const Events = await repo.deleteByIdAsync(id);
+        return Events;
+    }
 }

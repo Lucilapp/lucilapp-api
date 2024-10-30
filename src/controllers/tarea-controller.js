@@ -70,7 +70,7 @@ router.patch('/:idUsuario/:idTarea', async (req, res) =>
     });
     
 
-export default router; 
+
 
 
 //Chat BackEnd
@@ -91,3 +91,18 @@ router.post('', async (req, res) =>
 
     return respuesta
 })
+
+router.delete('/:id', async (req, res) => 
+{  
+    let id = req.params.id;
+    let respuesta;
+    
+    const returnArray = await svc.deleteByIdAsync(id);
+
+    respuesta = res.status(200).json(returnArray);
+ 
+    return respuesta;
+
+})
+
+export default router; 
