@@ -32,9 +32,9 @@ export default class TareaRepository
         const pgHelper = new PgHelper();
         return pgHelper.sqlQuery(        
             `INSERT INTO "Tarea"
-                ("Descripcion", "Tomada", "IdCategoria", "IdCliente", "IdUsuario", "ClientSocket")
+                ("Descripcion", "Tomada", "IdCategoria", "IdCliente", "IdUsuario", "TiempoCreacion", "ClientSocket")
             VALUES
-                ('${entity.descripcion}', ${entity.tomada}, ${entity.idCategoria}, ${entity.idCliente}, ${entity.idUsuario}, '${entity.clientSocket}')`
+                ('${entity.descripcion}', ${entity.tomada}, ${entity.idCategoria}, ${entity.idCliente}, ${entity.idUsuario}, '${entity.tiempoCreacion}', '${entity.clientSocket}')`
         )
     }
 

@@ -79,6 +79,10 @@ router.post('', async (req, res) =>
 {
     let respuesta
     let entity = req.body;
+    const currentTimestampMillis = Date.now();
+    const timestamp = new Date(currentTimestampMillis);
+    const formattedTimestamp = timestamp.toISOString().slice(0, 19).replace('T', ' ').replace('Z', '');
+    entity.tiempoCreacion = formattedTimestamp;
     const returnArray = await svc.createAsync(entity);
     if(returnArray != null)
     {
