@@ -6,7 +6,6 @@ const svc = new UsuarioService();
 
 router.post('/registro', async (req, res) => 
 {
-    // nombre completo, mail, telefono, contraseña
     let respuesta
     let entity = req.body;
 

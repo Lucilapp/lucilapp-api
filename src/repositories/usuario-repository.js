@@ -4,8 +4,9 @@ export default class UsuarioRepository
 {
     createAsync = async (entity) => 
     {    
-        console.log("entidad ",entity)
+        console.log("entidad ",entity.contrasenia)
         const pgHelper = new PgHelper();
+        
         return pgHelper.sqlQuery(        
             `INSERT INTO "Usuario"
                 ("Nombre", "Contrasenia", "Mail", "Telefono", "Dni")
