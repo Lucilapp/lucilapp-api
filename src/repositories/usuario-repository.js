@@ -4,7 +4,6 @@ export default class UsuarioRepository
 {
     createAsync = async (entity) => 
     {    
-        console.log("entidad ",entity.contrasenia)
         const pgHelper = new PgHelper();
         
         return pgHelper.sqlQuery(        
@@ -15,4 +14,15 @@ export default class UsuarioRepository
         )
     }
 
+    getByUsernamePassword = async (nombre, contrasenia) => 
+    {
+        const pgHelper = new PgHelper();
+        
+        return pgHelper.sqlQuery(        
+            `SELECT * FROM "Usuario" WHERE "Nombre" = '${nombre}' AND "Contrasenia" = '${contrasenia}'`
+        )
+
+    }
+
 }
+

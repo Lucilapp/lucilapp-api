@@ -1,4 +1,12 @@
 import UsuarioRepository from "../repositories/usuario-repository.js"; 
+import jwt from 'jsonwebtoken';
+
+const key = 'Clavesecreta2000$';
+const options =
+{
+    expiresIn:  '1h',
+    issuer: 'mi_organizacion'
+}
 
 export default class UsuarioService
 {
@@ -7,6 +15,32 @@ export default class UsuarioService
         const repo = new UsuarioRepository();
         const returnArray = await repo.createAsync(entity);
         return returnArray;
+    }
+
+    getByUsernamePassword = async (nombre, contrasenia) => 
+    {
+
+        const repo = new UsuarioRepository();
+        const returnArray = await repo.getByUsernamePassword(nombre, contrasenia);
+        return returnArray;
+
+    }
+
+    LogIn = async (nombre, contrasenia) =>
+    {
+        const repo = new UsuarioRepository();
+        const returnArray = await repo.getByUsernamePassword(nombre, contrasenia);
+        const payload = 
+        {
+            id: returnArray[0].id,
+            username: returnArray[0].username
+        }
+
+        let token = jwt.sign(payload, key, options);
+
+
+        
+        return {token};
     }
 
 }

@@ -24,4 +24,31 @@ router.post('/registro', async (req, res) =>
     return respuesta
 })
 
+router.post('/login', async(req, res)=>
+{
+
+    const returnArray = await svc.getByUsernamePassword(req.body.nombre, req.body.contrasenia);
+
+
+    if(returnArray.username == req.username && returnArray != "")
+    {
+
+        const GetAll = await svc.LogIn(req.body.nombre, req.body.contrasenia)
+        let token = GetAll.token;
+        
+        res.status(200).send({token})
+
+        
+    }
+    else
+    {
+        res.status(401).json({success: false, message: 'usuario o contraseña invalido'});
+    }
+
+
+
+})
+
+
+
 export default router; 
