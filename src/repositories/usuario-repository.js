@@ -14,12 +14,12 @@ export default class UsuarioRepository
         )
     }
 
-    getByUsernamePassword = async (nombre, contrasenia) => 
+    getByUsernamePassword = async (mail, contrasenia) => 
     {
         const pgHelper = new PgHelper();
         
         return pgHelper.sqlQuery(        
-            `SELECT * FROM "Usuario" WHERE "Nombre" = '${nombre}' AND "Contrasenia" = '${contrasenia}'`
+            `SELECT * FROM "Usuario" WHERE "Mail" = '${mail}' AND "Contrasenia" = '${contrasenia}'`
         )
 
     }

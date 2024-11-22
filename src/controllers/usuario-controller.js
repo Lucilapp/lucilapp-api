@@ -26,14 +26,13 @@ router.post('/registro', async (req, res) =>
 
 router.post('/login', async(req, res)=>
 {
+    const returnArray = await svc.getByUsernamePassword(req.body.mail, req.body.contrasenia);
 
-    const returnArray = await svc.getByUsernamePassword(req.body.nombre, req.body.contrasenia);
 
-
-    if(returnArray.username == req.username && returnArray != "")
+    if(returnArray != "")
     {
 
-        const GetAll = await svc.LogIn(req.body.nombre, req.body.contrasenia)
+        const GetAll = await svc.LogIn(req.body.mail, req.body.contrasenia)
         let token = GetAll.token;
         
         res.status(200).send({token})

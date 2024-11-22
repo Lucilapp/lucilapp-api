@@ -17,19 +17,19 @@ export default class UsuarioService
         return returnArray;
     }
 
-    getByUsernamePassword = async (nombre, contrasenia) => 
+    getByUsernamePassword = async (mail, contrasenia) => 
     {
 
         const repo = new UsuarioRepository();
-        const returnArray = await repo.getByUsernamePassword(nombre, contrasenia);
+        const returnArray = await repo.getByUsernamePassword(mail, contrasenia);
         return returnArray;
 
     }
 
-    LogIn = async (nombre, contrasenia) =>
+    LogIn = async (mail, contrasenia) =>
     {
         const repo = new UsuarioRepository();
-        const returnArray = await repo.getByUsernamePassword(nombre, contrasenia);
+        const returnArray = await repo.getByUsernamePassword(mail, contrasenia);
         const payload = 
         {
             id: returnArray[0].id,
