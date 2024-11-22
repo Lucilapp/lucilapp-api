@@ -1,10 +1,12 @@
 import {Router} from 'express';
 import CategoriaService from '../service/categoria-service.js';
+import Autentication from '../middlewares/autentication-middlewares.js';
 
 const router = Router();
+const mw = new Autentication();
 const svc = new CategoriaService();
 
-router.get('/', async (req, res) => {
+router.get('/', mw.desencriptacion, async (req, res) => {
     let respuesta;
     const returnArray = await svc.getAllAsync();
     if(returnArray != null)
@@ -18,7 +20,7 @@ router.get('/', async (req, res) => {
     return respuesta;
 });
 
-router.get('/:idFiltro', async (req, res) => 
+router.get('/:idFiltro', mw.desencriptacion, async (req, res) => 
 {
     let idFiltro_ = req.query.idFiltro;
     let respuesta;

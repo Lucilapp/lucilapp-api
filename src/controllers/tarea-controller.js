@@ -1,7 +1,9 @@
 import {Router} from 'express';
 import TareaService from '../service/tarea-service.js';
+import Autentication from '../middlewares/autentication-middlewares.js';
 
 const router = Router();
+const mw = new Autentication();
 const svc = new TareaService();
 
 // Home BackEnd
@@ -21,7 +23,7 @@ router.get('/', async (req, res) => {
     return respuesta;
 });
 
-router.get('/:idCategoria', async (req, res) => 
+router.get('/:idCategoria', mw.desencriptacion, async (req, res) => 
 {
 
     let idCategoria_ = req.query.idCategoria;
@@ -44,7 +46,7 @@ router.get('/:idCategoria', async (req, res) =>
     return respuesta;
 });
 
-router.patch('/:idUsuario/:idTarea', async (req, res) => 
+router.patch('/:idUsuario/:idTarea', mw.desencriptacion, async (req, res) => 
     {
     
         let idUsuario_ = req.params.idUsuario;
@@ -75,7 +77,7 @@ router.patch('/:idUsuario/:idTarea', async (req, res) =>
 
 //Chat BackEnd
 
-router.post('', async (req, res) => 
+router.post('', mw.desencriptacion, async (req, res) => 
 {
     let respuesta
     let entity = req.body;
@@ -96,7 +98,7 @@ router.post('', async (req, res) =>
     return respuesta
 })
 
-router.delete('/:id', async (req, res) => 
+router.delete('/:id', mw.desencriptacion, async (req, res) => 
 {  
     let id = req.params.id;
     let respuesta;

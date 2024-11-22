@@ -1,11 +1,13 @@
 import {Router} from 'express';
 import ClienteService from '../service/cliente-service.js';
+import Autentication from '../middlewares/autentication-middlewares.js';
 
 const router = Router();
+const mw = new Autentication();
 const svc = new ClienteService();
 
 
-router.get('/:id', async (req, res) => 
+router.get('/:id', mw.desencriptacion, async (req, res) => 
 {
     let id = req.params.id;
     
